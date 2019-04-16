@@ -1,9 +1,10 @@
-#include <iostream>
-#include <math.h>
+#include <climits>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
 #include <random>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <iostream>
 
 using namespace std;
 
@@ -25,7 +26,7 @@ void selectionSort(int *A, int n);
 
 int main() {
 
-	int number = 10000;
+	int number = 100000;
 	clock_t bubbleSortTime, heapSortTime, insertionSortTime, mergeSortTime, quickSortTime, selectionSortTime;
 
 	random_device rd;
