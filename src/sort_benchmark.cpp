@@ -20,8 +20,6 @@
 #include <iostream>
 #include <random>
 
-using namespace std;
-
 void bubbleSort(int* A, int n);
 
 void maxHeapify(int* A, int i, int n);
@@ -43,9 +41,9 @@ int main() {
     int number = 100000;
     clock_t bubbleSortTime, heapSortTime, insertionSortTime, mergeSortTime, quickSortTime, selectionSortTime;
 
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<int> dist(0, 1000);
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dist(0, 1000);
 
     int* numbers = (int*)calloc(number, sizeof(int));
     int* temp = (int*)calloc(number, sizeof(int));
@@ -61,7 +59,7 @@ int main() {
     bubbleSortTime = clock();
     bubbleSort(temp, number);
     bubbleSortTime = clock() - bubbleSortTime;
-    cout << "BBL Sort : " << bubbleSortTime << endl;
+    std::cout << "BBL Sort : " << bubbleSortTime << std::endl;
 
     //Heap Sort
     for (int i = 0; i < number; i++) {
@@ -70,7 +68,7 @@ int main() {
     heapSortTime = clock();
     heapSort(temp, (number - 1));
     heapSortTime = clock() - heapSortTime;
-    cout << "HEP Sort : " << heapSortTime << endl;
+    std::cout << "HEP Sort : " << heapSortTime << std::endl;
 
     //Insertion Sort
     for (int i = 0; i < number; i++) {
@@ -79,7 +77,7 @@ int main() {
     insertionSortTime = clock();
     insertionSort(temp, number);
     insertionSortTime = clock() - insertionSortTime;
-    cout << "INS Sort : " << insertionSortTime << endl;
+    std::cout << "INS Sort : " << insertionSortTime << std::endl;
 
     //Merge Sort
     for (int i = 0; i < number; i++) {
@@ -88,7 +86,7 @@ int main() {
     mergeSortTime = clock();
     mergeSort(temp, 0, (number - 1));
     mergeSortTime = clock() - mergeSortTime;
-    cout << "MRG Sort : " << mergeSortTime << endl;
+    std::cout << "MRG Sort : " << mergeSortTime << std::endl;
 
     //Quick Sort
     for (int i = 0; i < number; i++) {
@@ -97,7 +95,7 @@ int main() {
     quickSortTime = clock();
     quickSort(temp, 0, (number - 1));
     quickSortTime = clock() - quickSortTime;
-    cout << "QCK Sort : " << quickSortTime << endl;
+    std::cout << "QCK Sort : " << quickSortTime << std::endl;
 
     //Selection Sort
     for (int i = 0; i < number; i++) {
@@ -106,7 +104,7 @@ int main() {
     selectionSortTime = clock();
     selectionSort(temp, number);
     selectionSortTime = clock() - selectionSortTime;
-    cout << "SEL Sort : " << selectionSortTime << endl;
+    std::cout << "SEL Sort : " << selectionSortTime << std::endl;
 
     return 0;
 }
@@ -144,7 +142,7 @@ void maxHeapify(int* A, int i, int n) {
     }
 
     if (largest != i) {
-        swap(*(A + i), *(A + largest));
+        std::swap(*(A + i), *(A + largest));
         maxHeapify(A, largest, n);
     }
 }
@@ -157,7 +155,7 @@ void heapSort(int* A, int n) {
     int length = n;
     buildMaxHeap(A, n);
     for (int i = length; i > 0; i--) {
-        swap(*(A), *(A + i));
+        std::swap(*(A), *(A + i));
         n--;
         maxHeapify(A, 0, n);
     }
@@ -224,10 +222,10 @@ int partition(int* A, int p, int r) {
     for (int j = p; j < r; j++) {
         if (*(A + j) <= x) {
             i++;
-            swap(*(A + i), *(A + j));
+            std::swap(*(A + i), *(A + j));
         }
     }
-    swap(*(A + (i + 1)), *(A + r));
+    std::swap(*(A + (i + 1)), *(A + r));
     return i + 1;
 }
 void quickSort(int* A, int p, int r) {
